@@ -1,5 +1,5 @@
 package  
-{
+{	
 	import org.flixel.*;
 	import org.flixel.plugin.photonstorm.*;
 	
@@ -27,6 +27,7 @@ package
 		
 		override public function create():void
 		{
+
 			backgroundIMG = new FlxSprite(0, 0, backgroundPNG);
 			
 			menuFloor = new FlxTilemap;
@@ -35,13 +36,13 @@ package
 			menuFloorUp = new FlxTilemap;
 			menuFloorUp.loadMap(new menuFloorUpCSV, mapTilesPNG, 16, 16, 0, 0, 1, 31);
 				
-			player = new Player(-30, 328);
+			player = new Player( -30, 304);
 			
 			add(backgroundIMG);		
 			add(menuFloor);
 			add(menuFloorUp);
 			add(player);
-		
+
 			FlxG.watch(player.acceleration, "x", "ax");
 			FlxG.watch(player.velocity, "x", "vx");
 			FlxG.watch(player.velocity, "y", "vy");
@@ -53,6 +54,11 @@ package
 			super.update();
 			
 			FlxG.collide(player, menuFloor);
+			
+			if (player.x > FlxG.width)
+			{
+				FlxG.switchState(new PlayState);
+			}
 		}
 		
 		override public function destroy():void

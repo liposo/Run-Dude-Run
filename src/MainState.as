@@ -60,7 +60,7 @@ package
 			menuFloorUp.loadMap(new menuFloorUpCSV, mapTilesPNG, 16, 16, 0, 0, 1, 31);
 				
 			player = new Player(32, 100);
-			
+					
 			add(backgroundIMG);
 			add(title1);		
 			add(menuFloor);
@@ -85,7 +85,7 @@ package
 				add(title2);
 				
 			}
-			
+					
 			if (player.x > FlxG.width)
 			{
 				FlxG.switchState(new PlayState);
@@ -95,7 +95,6 @@ package
 		
 		override public function destroy():void
 		{
-			FlxScrollingText.clear();	
 			super.destroy();
 		}
 	}
